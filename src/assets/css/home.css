@@ -1,30 +1,15 @@
-body {
-	/* overflow-x: hidden;  */
-}
+#main {
+	background: #fff; 
+	padding-bottom: 50px;
+ }
 
-
-.wrap {
-    width: 95%;
-    margin: 0 auto;
-}
-
-main {
-   background: #fff; 
-   padding-bottom: 50px;
-}
-
-
-.address_search #search_box {
-   	width: 50%;
-	height: 45px;
-	background: #F6F6F6;
+.address_search #searchbox {
+	display:flex; 
+	width: 50%;
+ 	height: 45px;
+ 	background: #F6F6F6;
 	border-radius: 10px;
 	margin: 20px auto;
-	display:flex; 
-} 
-
-.address_search #search_box input {
-	font-size: 1.8rem;
 }
 
 .address_search #search_box > div:first-child {
@@ -44,19 +29,19 @@ main {
 	color: #999999;
 }
 
- .address_search #deleveryAddress2 {
+.address_search #address {
     height: 100%;
     width: 100%;
     padding-left: 10px;
     border: none;
     background: none;
  }
- 
+
  .address_search #search_btn {
     display: none;
  }
 
-.category_box .box {
+ .category_box .box {
     max-width: 1000px;
     width: 90%;
     margin: 0 auto;
@@ -138,6 +123,3 @@ main {
 	
 	
 }
-
-
-

@@ -1,6 +1,7 @@
+/* -------------  푸터 ------------- */
 #footer {
     background-color:#2AC1BC;
-    height: 130px;
+    height: 100px;
     font-size: 13px;
     color: #fff;
     display: flex;
