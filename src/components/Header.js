@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import Baemin from '../assets/img/baemin.jpg';
@@ -8,6 +8,16 @@ import '../assets/css/layout/header.css';
 import '../assets/fontawesome/css/all.min.css';
 
 const Header = () => {
+
+    useEffect(() => {
+        const menuTabBox = document.querySelector('.menu_tab_box');
+        const menu = document.querySelector('#menu');
+
+        menuTabBox.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+    });
+
     return (
         <>
             <div id="header">
