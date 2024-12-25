@@ -8,30 +8,28 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Home from './pages/Home';
 
+
+
 function App() {
 
   const { pathname } = useLocation();
 
   if (pathname === '/signin') {
     return (
-      <div id='wrap'>
-        <Header />
+      <div id='app'>
         <Routes>
           <Route path='/signin/*' exact={true} element={<SignIn />}></Route>
         </Routes>
-        <Footer />
       </div>
     );
   }
 
   if (pathname === '/signup') {
     return (
-      <div id='wrap'>
-        <Header />
+      <div id='app'>
         <Routes>
           <Route path='/signup/*' exact={true} element={<SignUp />}></Route>
         </Routes>
-        <Footer />
       </div>
 
     );
