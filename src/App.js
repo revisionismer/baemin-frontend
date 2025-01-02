@@ -40,6 +40,7 @@ function App() {
       <Header />
       <Routes>
         <Route path='/*' exact={true} element={<Home />}></Route>
+        <Route path='/home' exact={true} element={<Home />}></Route>
       </Routes>
       <Footer />
     </div>
