@@ -109,7 +109,7 @@ const Header = () => {
                         <div><Link to="/admin/storeManagement">매장 관리</Link></div>
                         <div><Link to="/admin/salesManagement">매출 확인</Link></div>
                         <div><Link to="/admin/myStore">운영중인가게</Link></div>
-                        <div><Link to="/">홈으로</Link></div>
+                        <div><Link to="/home">홈으로</Link></div>
                         {ACCESS_TOKEN ? <div><Link onClick={() => logout()}>로그아웃</Link></div> : ''}
                     </div>
                 </div>

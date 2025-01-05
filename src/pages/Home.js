@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { DaumPostcode, useDaumPostcodePopup } from "react-daum-postcode";
+
 import Nav from '../components/Nav';
 
 import '../assets/css/home.css';
@@ -18,23 +20,57 @@ import Dosirac from '../assets/img/dosirac.jpg';
 
 // 2024-12-22 : 여기까지
 const Home = () => {
+    // 1-1.
+    const [userFullAddress, setFullAddress] = useState("");
+
+    // 1-2.
+    const [userZoneCode, setUserZoneCode] = useState("");
+
+    // 1-3
+    const open = useDaumPostcodePopup();
+
+    // 1-4
+    const handleComplete = (data) => {
+        let fullAddress = data.address;
+        let extraAddress = "";
+        let zonecode = data.zonecode;
+
+        if (data.addressType === "R") {
+            if (data.bname !== "") {
+                extraAddress += data.bname;
+            }
+            if (data.buildingName !== "") {
+                extraAddress +=
+                    extraAddress !== "" ? `, ${data.buildingName}` : data.buildingName;
+            }
+            fullAddress += extraAddress !== "" ? ` (${extraAddress})` : "";
+        }
+
+        setFullAddress(fullAddress);
+        setUserZoneCode(zonecode);
+    };
+
+    const handleClick = () => {
+        open(
+            { onComplete: handleComplete },
+        )
+    }
+
     return (
         <>
             <div id='main'>
                 <section className='address_search'>
                     <div id='searchbox'>
-                        <div>
-                            <input type='hidden' id='zipCode' placeholder='우편번호'></input>
-                            <input type='text' id='address' placeholder='주소를 입력해주세요.'></input><br />
-                        </div>
+                        <input type='hidden' id='zoneCode' placeholder='우편번호' defaultValue={userZoneCode} required></input>
+                        <input type='text' id='fullAddress' placeholder='주소를 입력해주세요.' defaultValue={userFullAddress} required></input><br />
 
-                        <div className="search_btn">
+                        <div className="search_btn"  >
 
                             <label htmlFor="search_btn">
                                 <i className="fas fa-search"></i>
                             </label>
 
-                            <input type="button" name="search" id="search_btn" />
+                            <input type="button" name="search" id="search_btn" onClick={() => handleClick()} />
 
                         </div>
                     </div>
