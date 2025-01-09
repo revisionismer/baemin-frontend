@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 .fas.fa-heart {
 	color: red;
 }
@@ -19,7 +21,6 @@
 	min-height: calc(100vh - 210px);
 }
 
-/* -------------- ��� ���� ���� -------------- */
 nav {
 	width: 100%;
 	text-align: center;
@@ -46,11 +47,6 @@ nav .inf .store_review_count:after {
 	content: '|';
 }
 
-/* -------------- ��� ���� ���� -------------- */
-
-/* -------------- ��ٱ��� -------------- */
-
-/* ����� īƮ */
 .m_cart_img {
 	position: fixed;
 	bottom: 3%;
@@ -92,9 +88,7 @@ nav .inf .store_review_count:after {
 	font-weight: 1000;
 	display: none;
 }
-/* ����� īƮ */
 
-/* īƮ ������� �޼��� */
 .alarm {
 	position: fixed;
 	left: 50%;
@@ -191,9 +185,6 @@ nav .inf .store_review_count:after {
 	margin-top: 10px;
 }
 
-/* -------------- ��ٱ��� -------------- */
-
-/* -------------- ���� -------------- */
 main {
 	width: 70%;
 }
@@ -221,17 +212,14 @@ main ul.tab li:hover {
 main ul.tab li.select {
 	background: #30DAD9;
 	color: #fff;
-	/* �޴��� Ŭ���� �� �ٲ� */
 }
 
-/* �޴� ���� ���� �� */
 main ul.menu {
 	padding-bottom: 50px;
 	border: 2px solid #ddd;
 	margin-bottom: 30px;
 }
 
-/* �޴� ���� */
 main ul.menu li {
 	border-bottom: 1px solid #ddd;
 }
@@ -260,12 +248,7 @@ main ul.menu li .menu_box img {
     object-fit: cover;
 }
 
-/* -------------- ���� -------------- */
-
-/* ----------------- ���� �� ----------------- */
 main ul.info {
-	/* display: none; */
-	/* īī�� ���� ������ ��ũ��Ʈ�� hide�� */
 	
 }
 
@@ -330,9 +313,6 @@ main ul.info {
 	display: inline-block;
 }
 
-/* ----------------- ���� �� ----------------- */
-
-/* ----------------- ���� �� ----------------- */
 main .comment {
 	display: none;
 }
@@ -453,11 +433,7 @@ main .comment li .boss_comment_box {
 	border-radius: 10px;
 	cursor: pointer;
 }
-/* ������ */
 
-
-
-/* �޴� Ŭ�� ��� */
 .food_modal img {
 	width: 100%;
 }
@@ -563,7 +539,6 @@ main .comment li .boss_comment_box {
 	display: none;
 }
 
-/*-------�޴�����Ʈ Ŭ�� ��� ---------*/
 @media ( max-width :1023px) {
 	#wrap {
 		width: 95%;
@@ -627,9 +602,5 @@ main .comment li .boss_comment_box {
 		height: 10vh;
 		line-height: 10vh;
 	}
-	
-	
-	
-	
-	
+
 }

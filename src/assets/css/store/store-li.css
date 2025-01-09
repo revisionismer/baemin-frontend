@@ -1,5 +1,4 @@
-
-/* 가게 목록 */
+@charset "UTF-8";
 
 .box .fas {
 	color: gold;
@@ -11,12 +10,14 @@
 }
 
 .box .temp_img {
-	display: block;
+	display: flex;
+	justify-content: center;
 	margin: 0 auto;
-	width:90%;
-	max-width: 500px;
+	width: 90%;
+	height: 500px;
+	display: none;
+	
 }
-
 
 .box .store {
     display: flex;
@@ -92,10 +93,6 @@
 	align-items: center;
 	height: 100%; 
 }
-
-/* 가게 목록 */
-
-
 
 @media (max-width:1024px) {
 	.box .store {
