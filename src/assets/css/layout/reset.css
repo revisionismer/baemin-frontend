@@ -110,8 +110,6 @@ select{
 	-moz-border-radius: 0;
 }
 
-
-
 @media ( max-width :767px) {
 	html {
 		font-size: 56%;

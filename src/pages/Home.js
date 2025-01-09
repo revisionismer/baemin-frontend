@@ -33,7 +33,7 @@ const Home = () => {
     const handleComplete = (data) => {
         let fullAddress = data.address;
         let extraAddress = "";
-        let zonecode = data.zonecode;
+        let zoneCode = data.zonecode;
 
         if (data.addressType === "R") {
             if (data.bname !== "") {
@@ -47,7 +47,10 @@ const Home = () => {
         }
 
         setFullAddress(fullAddress);
-        setUserZoneCode(zonecode);
+        setUserZoneCode(zoneCode);
+
+        setCookie("fullAddress", fullAddress, 7);
+        setCookie("zoneCode", zoneCode, 7);
     };
 
     const handleClick = () => {
@@ -55,6 +58,40 @@ const Home = () => {
             { onComplete: handleComplete },
         )
     }
+
+    useEffect(() => {
+        if (getCookie('fullAddress')) {
+            document.querySelector('#fullAddress').value = getCookie('fullAddress');
+        }
+
+        if (getCookie('zoneCode')) {
+            document.querySelector('#zoneCode').value = getCookie('zoneCode');
+        }
+
+        document.querySelector('.category').addEventListener('click', () => {
+
+            var fullAddress = document.querySelector('#fullAddress').value;
+
+            if (!fullAddress) {
+                alert("주소를 입력해주세요.");
+                return false;
+            }
+
+        })
+
+    })
+
+    var setCookie = function (name, value, exp) {
+        var date = new Date();
+        date.setTime(date.getTime() + exp * 24 * 60 * 60 * 1000);
+        document.cookie = name + '=' + value + ';expires=' + date.toUTCString() + ';path=/';
+    };
+
+    var getCookie = function (name) {
+        var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+        return value ? value[2] : null;
+    };
+
 
     return (
         <>

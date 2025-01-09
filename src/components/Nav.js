@@ -5,15 +5,17 @@ import '../assets/css/layout/nav.css';
 
 const Nav = () => {
     return (
-        <div id='nav'>
-            <ul>
-                <li><Link to="/"></Link></li>
-                <li><Link to="/store/search"></Link></li>
-                <li><Link to="/likes/store"></Link></li>
-                <li><Link to="/orderList"></Link></li>
-                <li><Link to="/myPage"></Link></li>
-            </ul>
-        </div>
+        <>
+            <div id='nav'>
+                <ul>
+                    <li><Link to="/home"></Link></li>
+                    <li><Link to="/store"></Link></li>
+                    <li><Link to="/likes"></Link></li>
+                    <li><Link to="/order/orderList"></Link></li>
+                    <li><Link to="/user/myPage"></Link></li>
+                </ul>
+            </div>
+        </>
     );
 };
 
