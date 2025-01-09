@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
 	background: #F6F6F6;
 }
@@ -89,9 +90,6 @@ main ul .order_box {
 	font-size: 1.3rem;
 }
 
-
-
-/* ------------리뷰 쓰기 모달-------------- */
 .modal  .modal_box {
 	height: calc(100% - 80px);
 }
@@ -179,7 +177,7 @@ main ul .order_box {
 .modal .review_submit_btn {
 	background: #ddd;
 }
-/* ------------리뷰 쓰기, 수정하기 모달-------------- */
+
 @media ( max-width :1023px) {
 	.wrap {
 		width: 99%;

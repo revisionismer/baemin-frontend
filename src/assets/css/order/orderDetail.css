@@ -1,3 +1,4 @@
+@charset "UTF-8";
 main {
 	width: 800px;
 	margin : 0 auto 50px ;
@@ -94,14 +95,9 @@ main .total div {
 	font-weight: bold;
 }
  
- 
- 
 main .address li {
     color: #a5a5a5;
 }
- 
- 
- 
  
 @media (max-width:1024px) {
 	main {
@@ -112,6 +108,7 @@ main .address li {
 		
 	}
 }
+
 @media  (max-width:767px) {
 	
 }
