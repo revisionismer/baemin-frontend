@@ -62,10 +62,10 @@ const Store = () => {
                         <ul className="store">
                             <li>
                                 <div className="img_box">
-                                    <Link><img src={DominoPizza} /></Link>
+                                    <Link to={'/store/1/detail'}><img src={DominoPizza} /></Link>
                                 </div>
                                 <div className="info_box">
-                                    <h2><Link>도미노피자</Link></h2>
+                                    <h2><Link to={'/store/1/detail'}>도미노피자</Link></h2>
                                     <br />
                                     <Link>
                                         <span>
@@ -78,10 +78,10 @@ const Store = () => {
                             </li>
                             <li>
                                 <div className="img_box">
-                                    <Link><img src={MrPizza} /></Link>
+                                    <Link to={'/store/2/detail'}><img src={MrPizza} /></Link>
                                 </div>
                                 <div className="info_box">
-                                    <h2><Link>미스터피자</Link></h2>
+                                    <h2><Link to={'/store/2/detail'}>미스터피자</Link></h2>
                                     <br />
                                     <Link>
                                         <span>
@@ -94,10 +94,10 @@ const Store = () => {
                             </li>
                             <li>
                                 <div className="img_box">
-                                    <Link><img src={PizzaHut} /></Link>
+                                    <Link to={'/store/3/detail'}><img src={PizzaHut} /></Link>
                                 </div>
                                 <div className="info_box">
-                                    <h2><Link>피자헛</Link></h2>
+                                    <h2><Link to={'/store/3/detail'}>피자헛</Link></h2>
                                     <br />
                                     <Link>
                                         <span>
@@ -110,10 +110,10 @@ const Store = () => {
                             </li>
                             <li>
                                 <div className="img_box">
-                                    <Link><img src={PizzaMaru} /></Link>
+                                    <Link to={'/store/4/detail'}><img src={PizzaMaru} /></Link>
                                 </div>
                                 <div className="info_box">
-                                    <h2><Link>피자마루</Link></h2>
+                                    <h2><Link to={'/store/4/detail'}>피자마루</Link></h2>
                                     <br />
                                     <Link>
                                         <span>
