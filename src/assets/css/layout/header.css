@@ -116,27 +116,39 @@
  
  
 @media ( max-width :1250px) {
+	#wrap {
+		width: 100%;
+	}
+
 	#header {
-		width: 99%;
+		width: 100%;
 	}
 }
  
 @media ( max-width :767px) {
-	header img {
+	#wrap {
+		width: 100%;
+	}
+	
+	#header {
+		width: 100%;
+	}
+	
+	#header img {
 		width: 120px;
 		position: relative;
 		left: -15px;
 	}
-	header {
+	#header {
 		height: 60px;
 	}
 	
-	header #menu {
+	#header #menu {
 		width: 300px; 
 		right: -300px;
 	}
 	
-	header #menu .box {
+	#header #menu .box {
 		margin-top: 60px;
 	}
 	.menu_tab {
