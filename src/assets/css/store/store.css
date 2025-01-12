@@ -36,8 +36,9 @@
     color: #ddd;
 }
 
-.category li > span{
+.category li > span {
 	padding-bottom: 5px;
+	color: black;
 }
 
 .category li:hover {
@@ -87,6 +88,10 @@
 	    overflow-x: auto;
 	    overflow-y:hidden; 
 	}
+
+	.option li {
+		padding: 5px 15px;
+	} 
 	
 	.option::-webkit-scrollbar  { 
 	    background:none;
@@ -115,7 +120,7 @@
 	}
 	
 	.option ul { 
-	    margin:10px;
+	    margin: 10px;
 	}
 	
 	

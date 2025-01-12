@@ -87,7 +87,7 @@ const Header = () => {
         menuTabBox.addEventListener('click', () => {
             menu.classList.toggle('active');
         });
-    });
+    }, []);
 
     return (
         <>

@@ -12,6 +12,7 @@ import MyPage from './pages/user/MyPage';
 
 import Likes from './pages/store/Likes';
 import OrderList from './pages/order/OrderList';
+import StoreDetail from './pages/store/StoreDetail';
 
 function App() {
 
@@ -48,6 +49,7 @@ function App() {
         <Route path='/order/orderList' exact={true} element={<OrderList />}></Route>
         <Route path='/user/myPage' exact={true} element={<MyPage />}></Route>
         <Route path='/store' exact={true} element={<Store />}></Route>
+        <Route path='/store/:id/detail' exact={true} element={<StoreDetail />}></Route>
       </Routes>
       <Footer />
     </div>
