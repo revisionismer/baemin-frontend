@@ -4,7 +4,10 @@ import { Link, Navigate, json, useLocation, useNavigate, useParams } from 'react
 import Nav from '../../components/Nav';
 
 import '../../assets/css/store/detail.css';
+
 import None from '../../assets/img/none.gif';
+import ModalCart from './ModalCart';
+
 
 // 2025-01-10 : 여기까지
 
@@ -47,7 +50,43 @@ const StoreDetail = () => {
             }
         })
 
+
     }, []);
+
+    useEffect(() => {
+        document.querySelector(".cart_main > ul.menu").addEventListener('click', (e) => {
+            console.log(e.target.textContent);
+
+            const deliveryModal = document.querySelector(".modal");
+
+            console.log(deliveryModal);
+
+            deliveryModal.classList.toggle('show');
+
+
+        })
+
+    })
+
+    // 2025-1-13 : 모달부분 진행중
+    function foodModalHtml() {
+        let html = "";
+
+        html += `<li>
+                    <div class="option_box">
+                        <span>
+                            <i class="fas fa-check-square"></i>
+                            <input type="checkbox" class="menu_option" name="option" value="">
+                            <input type="hidden" class="option_price" value="">
+                            <input type="hidden" class="option_id" value="">
+                        </span>
+                        <span>0 원</span>
+                    </div>
+                </li>
+        `;
+
+        document.querySelector("#option ul").append(html);
+    }
 
     return (
         <>
@@ -69,109 +108,111 @@ const StoreDetail = () => {
                         <div id="delevery_tip">배달팁 : 1000원</div>
                     </div>
                 </nav>
+                <div id='cart_detail'>
+                    <aside id="cart">
+                        <div className="cart">
+                            <h2>장바구니</h2>
+                            <i className="far fa-trash-alt deleteAll" ></i>
 
-                <aside id="cart">
-                    <div className="cart">
-                        <h2>장바구니</h2>
-                        <i className="far fa-trash-alt deleteAll" ></i>
+                            <div className="cart_list">
+                                <ul>
+                                    <li></li>
+                                </ul>
+                            </div>
 
-                        <div className="cart_list">
-                            <ul>
-                                <li></li>
-                            </ul>
+                            <div className="order_btn_box">
+                                <div className="total">장바구니가 비었습니다.</div>
+                                <button id='order_btn' className="order_btn">주문하기</button>
+                            </div>
                         </div>
 
-                        <div className="order_btn_box">
-                            <div className="total">장바구니가 비었습니다.</div>
-                            <button id='order_btn' className="order_btn">주문하기</button>
-                        </div>
+                    </aside>
+
+                    <div className="alarm">장바구니에 담았습니다</div>
+
+                    <div className='cart_main'>
+                        <div className="offset"></div>
+                        <ul className="tab">
+                            <li className="select">메뉴</li>
+                            <li>정보</li>
+                            <li>리뷰</li>
+                        </ul>
+
+                        <ul className="menu">
+                            <li>
+                                <label className="menu_delete_label">
+                                    <i className="fas fa-check-square" ></i>
+                                    <input type="checkbox" className="menu_delete_checkbox" name="deleteNumber" value=""></input>
+                                </label>
+
+                                <div className="menu_box">
+                                    <div>
+                                        <h2>후라이드 치킨</h2> 11,000원
+                                        <input type='hidden' id='storeId' name='storeId' className='store_id' value=""></input>
+                                        <input type="hidden" id='foodId' name="foodId" className="food_id" value=""></input>
+                                        <input type="hidden" id='foodName' name="foodName" className="food_name" value=""></input>
+                                        <input type="hidden" id='foodPrice' name="foodPrice" className="food_price" value=""></input>
+                                        <input type="hidden" id='foodDec' name="foodDec" className="food_dec" value=""></input>
+                                        <input type="hidden" id='foodImg' name="foodImg" className="food_img" value="" ></input>
+                                        <input type="hidden" id='foodThumb' name="foodThumb" className="food_thumb" value=""></input>
+                                    </div>
+                                    <div><img src={None} alt="이미지" /></div>
+                                </div>
+                            </li>
+                            <li>
+                                <label className="menu_delete_label">
+                                    <i className="fas fa-check-square" ></i>
+                                    <input type="checkbox" className="menu_delete_checkbox" name="deleteNumber" value=""></input>
+                                </label>
+
+                                <div className="menu_box">
+                                    <div>
+                                        <h2>양념 치킨</h2> 13,000원
+                                        <input type='hidden' id='storeId' name='storeId' className='store_id' value=""></input>
+                                        <input type="hidden" id='foodId' name="foodId" className="food_id" value=""></input>
+                                        <input type="hidden" id='foodName' name="foodName" className="food_name" value=""></input>
+                                        <input type="hidden" id='foodPrice' name="foodPrice" className="food_price" value=""></input>
+                                        <input type="hidden" id='foodDec' name="foodDec" className="food_dec" value=""></input>
+                                        <input type="hidden" id='foodImg' name="foodImg" className="food_img" value="" ></input>
+                                        <input type="hidden" id='foodThumb' name="foodThumb" className="food_thumb" value=""></input>
+                                    </div>
+                                    <div><img src={None} alt="이미지" /></div>
+                                </div>
+                            </li>
+                            <li>
+                                <label className="menu_delete_label">
+                                    <i className="fas fa-check-square" ></i>
+                                    <input type="checkbox" className="menu_delete_checkbox" name="deleteNumber" value=""></input>
+                                </label>
+
+                                <div className="menu_box">
+                                    <div>
+                                        <h2>반반 치킨</h2> 14,000원
+                                        <input type='hidden' id='storeId' name='storeId' className='store_id' value=""></input>
+                                        <input type="hidden" id='foodId' name="foodId" className="food_id" value=""></input>
+                                        <input type="hidden" id='foodName' name="foodName" className="food_name" value=""></input>
+                                        <input type="hidden" id='foodPrice' name="foodPrice" className="food_price" value=""></input>
+                                        <input type="hidden" id='foodDec' name="foodDec" className="food_dec" value=""></input>
+                                        <input type="hidden" id='foodImg' name="foodImg" className="food_img" value="" ></input>
+                                        <input type="hidden" id='foodThumb' name="foodThumb" className="food_thumb" value=""></input>
+                                    </div>
+                                    <div><img src={None} alt="이미지" /></div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <ul className="info" >
+                            정보
+                        </ul>
+
+                        <ul className="comment" >
+                            코멘트
+                        </ul>
                     </div>
-
-                </aside>
-
-                <div className="alarm">장바구니에 담았습니다</div>
-
-                <div className='cart_main'>
-                    <div className="offset"></div>
-                    <ul className="tab">
-                        <li className="select">메뉴</li>
-                        <li>정보</li>
-                        <li>리뷰</li>
-                    </ul>
-
-                    <ul className="menu">
-                        <li>
-                            <label className="menu_delete_label">
-                                <i className="fas fa-check-square" ></i>
-                                <input type="checkbox" className="menu_delete_checkbox" name="deleteNumber" value=""></input>
-                            </label>
-
-                            <div className="menu_box">
-                                <div>
-                                    <h2>후라이드 치킨</h2> 11,000원
-                                    <input type='hidden' id='storeId' name='storeId' className='store_id' value=""></input>
-                                    <input type="hidden" id='foodId' name="foodId" className="food_id" value=""></input>
-                                    <input type="hidden" id='foodName' name="foodName" className="food_name" value=""></input>
-                                    <input type="hidden" id='foodPrice' name="foodPrice" className="food_price" value=""></input>
-                                    <input type="hidden" id='foodDec' name="foodDec" className="food_dec" value=""></input>
-                                    <input type="hidden" id='foodImg' name="foodImg" className="food_img" value="" ></input>
-                                    <input type="hidden" id='foodThumb' name="foodThumb" className="food_thumb" value=""></input>
-                                </div>
-                                <div><img src={None} alt="이미지" /></div>
-                            </div>
-                        </li>
-                        <li>
-                            <label className="menu_delete_label">
-                                <i className="fas fa-check-square" ></i>
-                                <input type="checkbox" className="menu_delete_checkbox" name="deleteNumber" value=""></input>
-                            </label>
-
-                            <div className="menu_box">
-                                <div>
-                                    <h2>후라이드 치킨</h2> 11,000원
-                                    <input type='hidden' id='storeId' name='storeId' className='store_id' value=""></input>
-                                    <input type="hidden" id='foodId' name="foodId" className="food_id" value=""></input>
-                                    <input type="hidden" id='foodName' name="foodName" className="food_name" value=""></input>
-                                    <input type="hidden" id='foodPrice' name="foodPrice" className="food_price" value=""></input>
-                                    <input type="hidden" id='foodDec' name="foodDec" className="food_dec" value=""></input>
-                                    <input type="hidden" id='foodImg' name="foodImg" className="food_img" value="" ></input>
-                                    <input type="hidden" id='foodThumb' name="foodThumb" className="food_thumb" value=""></input>
-                                </div>
-                                <div><img src={None} alt="이미지" /></div>
-                            </div>
-                        </li>
-                        <li>
-                            <label className="menu_delete_label">
-                                <i className="fas fa-check-square" ></i>
-                                <input type="checkbox" className="menu_delete_checkbox" name="deleteNumber" value=""></input>
-                            </label>
-
-                            <div className="menu_box">
-                                <div>
-                                    <h2>후라이드 치킨</h2> 11,000원
-                                    <input type='hidden' id='storeId' name='storeId' className='store_id' value=""></input>
-                                    <input type="hidden" id='foodId' name="foodId" className="food_id" value=""></input>
-                                    <input type="hidden" id='foodName' name="foodName" className="food_name" value=""></input>
-                                    <input type="hidden" id='foodPrice' name="foodPrice" className="food_price" value=""></input>
-                                    <input type="hidden" id='foodDec' name="foodDec" className="food_dec" value=""></input>
-                                    <input type="hidden" id='foodImg' name="foodImg" className="food_img" value="" ></input>
-                                    <input type="hidden" id='foodThumb' name="foodThumb" className="food_thumb" value=""></input>
-                                </div>
-                                <div><img src={None} alt="이미지" /></div>
-                            </div>
-                        </li>
-                    </ul>
-
-                    <ul className="info" >
-                        정보
-                    </ul>
-
-                    <ul className="comment" >
-                        코멘트
-                    </ul>
                 </div>
             </div>
             <Nav></Nav>
+            <ModalCart></ModalCart>
             <div className="m_cart_img">
                 <div className="m_cart_img_box">
                     <i className="fas fa-shopping-cart"></i>
