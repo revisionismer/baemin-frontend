@@ -8,3 +8,4 @@
 6. 다음 주소 찾기 API 연동
 7. store.js 페이지 css 적용 및 매장 이미지 등록
 8. storeDetail 페이지 메뉴 셀렉트박스 동작 기능 구현
+9. storeDetail 페이지에서 메뉴 클릭시 동작하는 modal 팝업창 구현 및 css 꾸미기

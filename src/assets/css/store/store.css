@@ -73,7 +73,7 @@
 
 @media (max-width:1400px) { 
 	.category {
-		display: none;
+	/*	display: none; */
 	}
 }
 

@@ -99,6 +99,11 @@ nav .inf .store_review_count:after {
 	display: none;
 }
 
+#cart_detail {
+	display: flex;
+	justify-content: space-between;
+}
+
 #cart {
 	width: 28%;
 	order: 1;
@@ -247,7 +252,11 @@ nav .inf .store_review_count:after {
 	
 }
 
-.info li {
+#main .info {
+	display: none;
+}
+
+#main .info li {
 	width: 100%;
 	margin: 15px auto;
 }
@@ -308,11 +317,11 @@ nav .inf .store_review_count:after {
 	display: inline-block;
 }
 
-main .comment {
+#main .comment {
 	display: none;
 }
 
-main .comment .score_info {
+#main .comment .score_info {
 	border: 1px solid #ddd;
 	border-radius: 10px;
 	padding: 15px;
@@ -320,36 +329,36 @@ main .comment .score_info {
 	justify-content: space-around;
 }
 
-main .comment .score_info .score {
+#main .comment .score_info .score {
 	font-size: 4.5rem;
 	font-weight: bold;
 	text-align: center;
 }
 
-main .comment .score_info i {
+#main .comment .score_info i {
 	font-size: 1.4rem;
 }
 
-main .comment .score_count {
+#main .comment .score_count {
 	font-size: 1.4rem;
 }
 
-main .comment .score_count>div {
+#main .comment .score_count>div {
 	display: flex;
 	justify-content: space-between;
 	width: 150px;
 }
 
-main .comment .score_info .score_count>div div:first-child {
+#main .comment .score_info .score_count>div div:first-child {
 	font-weight: bold;
 }
 
-main .comment .score_count .graph_box {
+#main .comment .score_count .graph_box {
 	position: relative;
 	width: 100px;
 }
 
-main .comment .score_count .graph_box div {
+#main .comment .score_count .graph_box div {
 	width: 100%;
 	height: 5px;
 	background: #ddd;
@@ -358,28 +367,28 @@ main .comment .score_count .graph_box div {
 	top: 40%;
 }
 
-main .comment .score_info .score_count .review_count {
+#main .comment .score_info .score_count .review_count {
 	color: #999999;
 	text-align: left;
 	width: 0px;
 }
 
-main .comment .boss_comment {
+#main .comment .boss_comment {
 	margin-bottom: 10px;
 }
 
-main .comment li {
+#main .comment li {
 	border-radius: 10px;
 	width: 100%;
 	margin: 15px auto 30px;
 	font-size: 1.8rem;
 }
 
-main .comment li .nickname {
+#main .comment li .nickname {
 	font-weight: bold;
 }
 
-main .comment li .client {
+#main .comment li .client {
 	border: 1px solid #ddd;
 	border-radius: 10px;
 	padding: 15px;
@@ -395,7 +404,7 @@ main .comment li .client {
 	font-size: 1.4rem;
 }
 
-main .comment li .boss_comment_box {
+#main .comment li .boss_comment_box {
 	background: #ddd;
 	width: 90%;
 	border-radius: 10px;
