@@ -8,9 +8,9 @@ import '../../assets/css/store/detail.css';
 import None from '../../assets/img/none.gif';
 import ModalCart from './ModalCart';
 
+import { Map } from 'react-kakao-maps-sdk';
 
 // 2025-01-10 : 여기까지
-
 const StoreDetail = () => {
 
     useEffect(() => {
@@ -63,30 +63,23 @@ const StoreDetail = () => {
 
             deliveryModal.classList.toggle('show');
 
-
         })
 
     })
 
-    // 2025-1-13 : 모달부분 진행중
-    function foodModalHtml() {
-        let html = "";
+    // 2025-01-17 : 카카오맵 API 띄우기 성공, 다음에는 현재 위도,경도 가지고 와서 현재 위치 뿌려주는걸로 변경하는 작업 필요
+    // 참고 : kakao에서 403에러가 뜰땐 카카오 개발자 사이트에서 카카오맵 탭에 들어가 활성화를 시켜줘야 통신이 가능하다.
+    useEffect(() => {
+        var container = document.getElementById("map");
+        var options = {
+            //지도를 생성할 때 필요한 기본 옵션
+            center: new kakao.maps.LatLng(37.54, 126.96), //지도의 중심좌표. 서울 한가운데
+            level: 3, //지도의 레벨(확대, 축소 정도) 3에서 8레벨로 확대
+        };
 
-        html += `<li>
-                    <div class="option_box">
-                        <span>
-                            <i class="fas fa-check-square"></i>
-                            <input type="checkbox" class="menu_option" name="option" value="">
-                            <input type="hidden" class="option_price" value="">
-                            <input type="hidden" class="option_id" value="">
-                        </span>
-                        <span>0 원</span>
-                    </div>
-                </li>
-        `;
+        var map = new kakao.maps.Map(container, options);
 
-        document.querySelector("#option ul").append(html);
-    }
+    }, []);
 
     return (
         <>
@@ -202,7 +195,67 @@ const StoreDetail = () => {
                         </ul>
 
                         <ul className="info" >
-                            정보
+                            <li>
+                                <div>
+                                    <h2>찾아 오시는 길</h2>
+
+                                    <div id="map_box">
+                                        <div id='map' style={{ width: "100%", height: "400px" }}></div>
+                                        <div id="position_box">
+                                            <button className="storePosition" ><i className="far fa-dot-circle"></i> 가게 위치로</button>
+                                            <button className="userPosition"> <i className="far fa-dot-circle"></i> 내 위치로</button>
+                                        </div>
+                                    </div>
+
+                                    <h2>위치안내</h2>
+                                    <div id="store_address">가게 주소</div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div>
+                                    <h2>가게 소개</h2>
+                                    <div>가게 소개 내용</div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div>
+                                    <h2>영업 정보</h2>
+
+                                    <div className="info_detail_title">
+                                        <div>상호명</div>
+                                        <div>영업시간</div>
+                                        <div>전화번호</div>
+
+                                    </div>
+
+                                    <div className="info_detail">
+                                        <div>매장 이름</div>
+                                        <div>
+                                            <span>시 ~</span>
+                                            <span>시 </span>
+                                        </div>
+                                        <div></div>
+
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div>
+                                    <h2>가계 통계</h2>
+                                    <div className="info_detail_title">
+                                        <div>최근 주문수</div>
+                                        <div>전체 리뷰 수</div>
+                                        <div>찜</div>
+                                    </div>
+
+                                    <div className="info_detail">
+
+                                    </div>
+                                </div>
+                            </li>
                         </ul>
 
                         <ul className="comment" >
@@ -213,6 +266,7 @@ const StoreDetail = () => {
             </div>
             <Nav></Nav>
             <ModalCart></ModalCart>
+
             <div className="m_cart_img">
                 <div className="m_cart_img_box">
                     <i className="fas fa-shopping-cart"></i>
