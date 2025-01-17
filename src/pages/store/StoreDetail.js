@@ -8,10 +8,10 @@ import '../../assets/css/store/detail.css';
 import None from '../../assets/img/none.gif';
 import ModalCart from './ModalCart';
 
-import { Map } from 'react-kakao-maps-sdk';
-
 // 2025-01-10 : 여기까지
 const StoreDetail = () => {
+
+    const [map, setMap] = useState(null);
 
     useEffect(() => {
         // 2025-01-12 : 메뉴 이벤트 처리 완료
@@ -41,6 +41,50 @@ const StoreDetail = () => {
                     cartMainMenu.style.display = 'none';
                     cartMainInfo.style.display = 'block';
                     cartMainComment.style.display = 'none';
+
+                    // 현재 위치 정보(위도, 경도) 가져오기.
+                    var options = {
+                        enableHighAccuracy: true,
+                        timeout: 5000,
+                        maximumAge: 0
+                    };
+
+                    function success(position) {
+                        //좌표를 알아낼 수 있는데, 여기서 알아낸 좌표를 kakaoAPI url에 사용할 것이다.(GPS가 없기 때문에 정확하지 않음)
+                        console.log('위도 : ' + position.coords.latitude);
+                        console.log('경도: ' + position.coords.longitude);
+
+                        let markerPosition = new kakao.maps.LatLng(
+                            position.coords.latitude,
+                            position.coords.longitude
+                        );
+
+                        let marker = new kakao.maps.Marker({
+                            position: markerPosition,
+                        });
+
+                        // 2025-01-17 : 카카오맵 API 띄우기 성공, 다음에는 현재 위도,경도 가지고 와서 현재 위치 뿌려주는걸로 변경하는 작업 필요
+                        // 참고 : kakao에서 403에러가 뜰땐 카카오 개발자 사이트에서 카카오맵 탭에 들어가 활성화를 시켜줘야 통신이 가능하다.
+                        var container = document.getElementById("map");
+
+                        var options = {
+                            //지도를 생성할 때 필요한 기본 옵션
+                            center: new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude), //지도의 중심좌표. 서울 한가운데
+                            level: 3, //지도의 레벨(확대, 축소 정도) 3에서 8레벨로 확대
+                        };
+
+                        const kakaoMap = new kakao.maps.Map(container, options);
+
+                        setMap(kakaoMap);
+                        marker.setMap(kakaoMap);
+                    };
+
+                    function error(err) {
+                        console.warn('ERROR(' + err.code + '): ' + err.message);
+                    };
+
+                    navigator.geolocation.getCurrentPosition(success, error, options);
+
                 } else if (target.textContent === '리뷰') {
                     cartMainMenu.style.display = 'none';
                     cartMainInfo.style.display = 'none';
@@ -66,20 +110,6 @@ const StoreDetail = () => {
         })
 
     })
-
-    // 2025-01-17 : 카카오맵 API 띄우기 성공, 다음에는 현재 위도,경도 가지고 와서 현재 위치 뿌려주는걸로 변경하는 작업 필요
-    // 참고 : kakao에서 403에러가 뜰땐 카카오 개발자 사이트에서 카카오맵 탭에 들어가 활성화를 시켜줘야 통신이 가능하다.
-    useEffect(() => {
-        var container = document.getElementById("map");
-        var options = {
-            //지도를 생성할 때 필요한 기본 옵션
-            center: new kakao.maps.LatLng(37.54, 126.96), //지도의 중심좌표. 서울 한가운데
-            level: 3, //지도의 레벨(확대, 축소 정도) 3에서 8레벨로 확대
-        };
-
-        var map = new kakao.maps.Map(container, options);
-
-    }, []);
 
     return (
         <>
