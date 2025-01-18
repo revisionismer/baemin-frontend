@@ -13,6 +13,8 @@ const StoreDetail = () => {
 
     const [map, setMap] = useState(null);
 
+    const location = useLocation();
+
     useEffect(() => {
         // 2025-01-12 : 메뉴 이벤트 처리 완료
         const cartMain = document.querySelector(".cart_main > ul.tab");
@@ -49,6 +51,10 @@ const StoreDetail = () => {
                         maximumAge: 0
                     };
 
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(success, error, options);
+                    }
+
                     function success(position) {
                         //좌표를 알아낼 수 있는데, 여기서 알아낸 좌표를 kakaoAPI url에 사용할 것이다.(GPS가 없기 때문에 정확하지 않음)
                         console.log('위도 : ' + position.coords.latitude);
@@ -67,23 +73,47 @@ const StoreDetail = () => {
                         // 참고 : kakao에서 403에러가 뜰땐 카카오 개발자 사이트에서 카카오맵 탭에 들어가 활성화를 시켜줘야 통신이 가능하다.
                         var container = document.getElementById("map");
 
-                        var options = {
+                        var mapOptions = {
                             //지도를 생성할 때 필요한 기본 옵션
                             center: new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude), //지도의 중심좌표. 서울 한가운데
-                            level: 3, //지도의 레벨(확대, 축소 정도) 3에서 8레벨로 확대
+                            level: 5, //지도의 레벨(확대, 축소 정도) 3에서 8레벨로 확대
                         };
 
-                        const kakaoMap = new kakao.maps.Map(container, options);
+                        const kakaoMap = new kakao.maps.Map(container, mapOptions);
 
                         setMap(kakaoMap);
                         marker.setMap(kakaoMap);
                     };
 
                     function error(err) {
+                        let markerPosition = new kakao.maps.LatLng(
+                            position.coords.latitude,
+                            position.coords.longitude
+                        );
+
+                        let marker = new kakao.maps.Marker({
+                            position: markerPosition,
+                        });
+
+                        // 2025-01-17 : 카카오맵 API 띄우기 성공, 다음에는 현재 위도,경도 가지고 와서 현재 위치 뿌려주는걸로 변경하는 작업 필요
+                        // 참고 : kakao에서 403에러가 뜰땐 카카오 개발자 사이트에서 카카오맵 탭에 들어가 활성화를 시켜줘야 통신이 가능하다.
+                        var container = document.getElementById("map");
+
+                        var mapOptions = {
+                            //지도를 생성할 때 필요한 기본 옵션
+                            center: new kakao.maps.LatLng(37.4812845080678, 126.952713197762), // GPS 동작 안할때 기본으로 보여줄 위치정보(서울 한복판)
+                            level: 5, //지도의 레벨(확대, 축소 정도) 3에서 8레벨로 확대
+                        };
+
+                        const kakaoMap = new kakao.maps.Map(container, mapOptions);
+
+                        setMap(kakaoMap);
+                        marker.setMap(kakaoMap);
+
                         console.warn('ERROR(' + err.code + '): ' + err.message);
                     };
 
-                    navigator.geolocation.getCurrentPosition(success, error, options);
+
 
                 } else if (target.textContent === '리뷰') {
                     cartMainMenu.style.display = 'none';
